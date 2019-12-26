@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.rxjava2.android.samples.R;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 

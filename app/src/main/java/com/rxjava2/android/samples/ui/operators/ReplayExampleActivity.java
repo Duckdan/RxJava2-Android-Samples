@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observables.ConnectableObservable;
@@ -45,7 +45,7 @@ public class ReplayExampleActivity extends AppCompatActivity {
     private void doSomeWork() {
 
         PublishSubject<Integer> source = PublishSubject.create();
-        ConnectableObservable<Integer> connectableObservable = source.replay(3); // bufferSize = 3 to retain 3 values to replay
+        ConnectableObservable<Integer> connectableObservable = source.replay(2); // bufferSize = 3 to retain 3 values to replay
         connectableObservable.connect(); // connecting the connectableObservable
 
         connectableObservable.subscribe(getFirstObserver());

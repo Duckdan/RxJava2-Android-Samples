@@ -14,7 +14,7 @@ import com.rxjava2.android.samples.ui.cache.source.MemoryDataSource;
 import com.rxjava2.android.samples.ui.cache.source.NetworkDataSource;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

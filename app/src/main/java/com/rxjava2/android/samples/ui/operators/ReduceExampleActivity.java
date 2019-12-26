@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.MaybeObserver;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;

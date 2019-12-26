@@ -12,7 +12,7 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.Callable;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;

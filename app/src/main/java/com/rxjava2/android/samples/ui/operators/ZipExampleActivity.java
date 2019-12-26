@@ -13,7 +13,7 @@ import com.rxjava2.android.samples.utils.Utils;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;

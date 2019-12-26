@@ -5,7 +5,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.rxjava2.android.samples.R;

@@ -9,7 +9,10 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
+
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -51,7 +54,7 @@ public class MergeExampleActivity extends AppCompatActivity {
         final Observable<String> aObservable = Observable.fromArray(aStrings);
         final Observable<String> bObservable = Observable.fromArray(bStrings);
 
-        Observable.merge(aObservable, bObservable)
+        Observable.timer(500, TimeUnit.MILLISECONDS).merge(aObservable, bObservable)
                 .subscribe(getObserver());
     }
 
@@ -68,6 +71,9 @@ public class MergeExampleActivity extends AppCompatActivity {
             public void onNext(String value) {
                 textView.append(" onNext : value : " + value);
                 textView.append(AppConstant.LINE_SEPARATOR);
+                if ("A3".equals(value)) {
+                    onError(new Throwable("妙计出错"));
+                }
                 Log.d(TAG, " onNext : value : " + value);
             }
 

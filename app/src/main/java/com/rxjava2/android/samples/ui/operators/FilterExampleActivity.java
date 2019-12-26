@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -49,6 +49,7 @@ public class FilterExampleActivity extends AppCompatActivity {
                 .filter(new Predicate<Integer>() {
                     @Override
                     public boolean test(Integer integer) {
+                        //为true的时候，将返回该integer
                         return integer % 2 == 0;
                     }
                 })

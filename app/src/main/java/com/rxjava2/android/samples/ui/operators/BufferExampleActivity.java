@@ -11,7 +11,7 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -44,7 +44,7 @@ public class BufferExampleActivity extends AppCompatActivity {
      * simple example using buffer operator - bundles all emitted values into a list
      */
     private void doSomeWork() {
-
+        //从第一个Observable开始，发射count个。第二次发射是从第一个初始值下标加skip
         Observable<List<String>> buffered = getObservable().buffer(3, 1);
 
         // 3 means,  it takes max of three from its start index and create list

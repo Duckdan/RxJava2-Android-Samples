@@ -11,7 +11,7 @@ import com.rxjava2.android.samples.utils.AppConstant;
 
 import java.util.concurrent.TimeUnit;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -51,6 +51,7 @@ public class DebounceExampleActivity extends AppCompatActivity {
     */
     private void doSomeWork() {
         getObservable()
+                //发射当前数据距离下一个数据之间的间隔超过500ms时当前发射的数据生效
                 .debounce(500, TimeUnit.MILLISECONDS)
                 // Run on a background thread
                 .subscribeOn(Schedulers.io())

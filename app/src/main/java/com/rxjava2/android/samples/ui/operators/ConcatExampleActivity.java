@@ -7,9 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.rxjava2.android.samples.R;
+import com.rxjava2.android.samples.model.NetWork;
 import com.rxjava2.android.samples.utils.AppConstant;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
+
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -48,18 +50,18 @@ public class ConcatExampleActivity extends AppCompatActivity {
      */
     private void doSomeWork() {
         final String[] aStrings = {"A1", "A2", "A3", "A4"};
-        final String[] bStrings = {"B1", "B2", "B3"};
+        final NetWork[] bStrings = {new NetWork("status1"), new NetWork("status2"), new NetWork("status3")};
 
         final Observable<String> aObservable = Observable.fromArray(aStrings);
-        final Observable<String> bObservable = Observable.fromArray(bStrings);
+        final Observable<NetWork> bObservable = Observable.fromArray(bStrings);
 
         Observable.concat(aObservable, bObservable)
                 .subscribe(getObserver());
     }
 
 
-    private Observer<String> getObserver() {
-        return new Observer<String>() {
+    private Observer<Object> getObserver() {
+        return new Observer<Object>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -67,10 +69,18 @@ public class ConcatExampleActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(String value) {
-                textView.append(" onNext : value : " + value);
+            public void onNext(Object value) {
+                String valueStr = "";
+                if (value instanceof String)
+                    valueStr = (String) value;
+                else
+                    valueStr = ((NetWork) value).status;
+                textView.append(" onNext : value : " + valueStr);
+                if ("A3".equals(valueStr)) {
+                    onError(new Throwable("Throwable"));
+                }
                 textView.append(AppConstant.LINE_SEPARATOR);
-                Log.d(TAG, " onNext : value : " + value);
+                Log.d(TAG, " onNext : value : " + valueStr);
             }
 
             @Override
