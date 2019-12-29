@@ -7,7 +7,11 @@ import android.view.View;
 
 import android.support.v7.app.AppCompatActivity;
 
+import com.androidnetworking.interceptors.HttpLoggingInterceptor;
+import com.androidnetworking.internal.InternalNetworking;
+import com.rx2androidnetworking.Rx2ANRequest;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.rx2androidnetworking.Rx2InternalNetworking;
 import com.rxjava2.android.samples.R;
 import com.rxjava2.android.samples.model.ApiUser;
 import com.rxjava2.android.samples.model.User;
@@ -26,6 +30,7 @@ import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by amitshekhar on 04/02/17.
@@ -45,7 +50,10 @@ public class NetworkingActivity extends AppCompatActivity {
      * Map Operator Example
      */
     public void map(View view) {
-        Rx2AndroidNetworking.get("https://fierce-cove-29863.herokuapp.com/getAnUser/{userId}")
+        //添加日志打印器，InternalNetworking可以用作全局添加日志打印
+        InternalNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
+        Rx2AndroidNetworking
+                .get("https://fierce-cove-29863.herokuapp.com/getAnUser/{userId}")
                 .addPathParameter("userId", "1")
                 .build()
                 .getObjectObservable(ApiUser.class)
@@ -183,6 +191,7 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     public void flatMapAndFilter(View view) {
+        //先获取数据然后再根据要求过滤掉不需要的数据
         getAllMyFriendsObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
@@ -229,6 +238,7 @@ public class NetworkingActivity extends AppCompatActivity {
      */
 
     public void take(View view) {
+        //指定获取多少个数据源的数据
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
@@ -269,6 +279,7 @@ public class NetworkingActivity extends AppCompatActivity {
      */
 
     public void flatMap(View view) {
+        //请求到一个数据之后又根据请求到的数据去请求另外一个数据
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override
@@ -331,6 +342,7 @@ public class NetworkingActivity extends AppCompatActivity {
     }
 
     public void flatMapWithZip(View view) {
+        //请求到一个数据之后又根据请求到的数据去请求另外一个数据，又用Zip多添加了一个整合操作符
         getUserListObservable()
                 .flatMap(new Function<List<User>, ObservableSource<User>>() { // flatMap - to return users one by one
                     @Override

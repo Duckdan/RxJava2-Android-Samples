@@ -12,9 +12,11 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by werockstar on 5/19/2017.
+ *
+ * 转换器
  */
-
 public class RxSchedulers {
+
 
     public <T> ObservableTransformer<T, T> applyObservableAsync() {
         return new ObservableTransformer<T, T>() {

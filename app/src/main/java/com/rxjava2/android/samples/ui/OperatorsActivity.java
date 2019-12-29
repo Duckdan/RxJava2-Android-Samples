@@ -195,18 +195,22 @@ public class OperatorsActivity extends AppCompatActivity {
     }
 
     public void startDelayActivity(View view) {
+        //延迟发送操作符
         startActivity(new Intent(OperatorsActivity.this, DelayExampleActivity.class));
     }
 
     public void startSwitchMapActivity(View view) {
+        //只映射当前的被观察者
         startActivity(new Intent(OperatorsActivity.this, SwitchMapExampleActivity.class));
     }
 
     public void startTakeWhileActivity(View view) {
+        //类似while循环，只有条件满足的时候才一直执行，之后就立马跳出
         startActivity(new Intent(OperatorsActivity.this, TakeWhileExampleActivity.class));
     }
 
     public void startTakeUntilActivity(View view) {
+        //只要执行takeUntil里面的观察者之后，之前的观察者将全部失效
         startActivity(new Intent(OperatorsActivity.this, TakeUntilExampleActivity.class));
     }
 }

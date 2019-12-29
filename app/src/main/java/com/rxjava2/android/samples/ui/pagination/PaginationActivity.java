@@ -4,9 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-
+import android.widget.Toast;
 
 
 import com.rxjava2.android.samples.R;
@@ -24,6 +25,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by amitshekhar on 15/03/17.
+ * 分页请求
  */
 
 public class PaginationActivity extends AppCompatActivity {
@@ -87,6 +89,7 @@ public class PaginationActivity extends AppCompatActivity {
 
     /**
      * subscribing for data
+     * 订阅数据
      */
     private void subscribeForData() {
 
@@ -99,9 +102,11 @@ public class PaginationActivity extends AppCompatActivity {
                 .concatMapSingle(page -> dataFromNetwork(page)
                         .subscribeOn(Schedulers.io())
                         .doOnError(throwable -> {
-                            // handle error
+                            // handle error，操作具体错误
+                            // 有操作
                         })
-                            // continue emission in case of error also
+                        // continue emission in case of error also
+                        //错误的时候返回空集合
                         .onErrorReturn(throwable -> new ArrayList<>()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(items -> {
@@ -114,14 +119,14 @@ public class PaginationActivity extends AppCompatActivity {
         compositeDisposable.add(disposable);
 
         paginator.onNext(pageNumber);
-
     }
+
 
     /**
      * Simulation of network data
      */
     private Single<List<String>> dataFromNetwork(final int page) {
-        return Single.just(true)
+        Single<List<String>> map = Single.just(true)
                 .delay(2, TimeUnit.SECONDS)
                 .map(value -> {
                     List<String> items = new ArrayList<>();
@@ -130,5 +135,6 @@ public class PaginationActivity extends AppCompatActivity {
                     }
                     return items;
                 });
+        return map;
     }
 }

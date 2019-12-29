@@ -32,19 +32,23 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public void startCacheActivity(View view) {
+        //三级缓存
         startActivity(new Intent(SelectionActivity.this, CacheExampleActivity.class));
     }
 
     public void startRxBusActivity(View view) {
+        //发布和订阅的模式
         ((MyApplication) getApplication()).sendAutoEvent();
         startActivity(new Intent(SelectionActivity.this, RxBusActivity.class));
     }
 
     public void startPaginationActivity(View view) {
+        //分页请求
         startActivity(new Intent(SelectionActivity.this, PaginationActivity.class));
     }
 
     public void startComposeOperator(View view) {
+        //转换器
         startActivity(new Intent(SelectionActivity.this, ComposeOperatorExampleActivity.class));
     }
 

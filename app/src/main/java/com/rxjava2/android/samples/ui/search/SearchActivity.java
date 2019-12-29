@@ -53,7 +53,7 @@ public class SearchActivity extends AppCompatActivity {
                         }
                     }
                 })
-                .distinctUntilChanged()
+                .distinctUntilChanged() //只有前后两次两个元素不一样的时候才会释放
                 .switchMap(new Function<String, ObservableSource<String>>() {
                     @Override
                     public ObservableSource<String> apply(String query) {
