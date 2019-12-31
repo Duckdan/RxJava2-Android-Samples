@@ -29,7 +29,6 @@ import com.rxjava2.android.samples.ui.operators.ReplaySubjectExampleActivity;
 import com.rxjava2.android.samples.ui.operators.ScanExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SimpleExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SingleAllOperatorActivity;
-import com.rxjava2.android.samples.ui.operators.SingleObserverExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SkipExampleActivity;
 import com.rxjava2.android.samples.ui.operators.SwitchMapExampleActivity;
 import com.rxjava2.android.samples.ui.operators.TakeExampleActivity;

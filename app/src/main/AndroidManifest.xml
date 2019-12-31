@@ -60,6 +60,8 @@
         <activity
             android:name=".ui.operators.SingleObserverExampleActivity"
             android:label="@string/SingleObserver" />
+        <activity android:name=".ui.operators.SingleAllOperatorActivity" />
+        <activity android:name=".ui.operators.SingleObserverConcatActivity" />
         <activity
             android:name=".ui.operators.CompletableObserverExampleActivity"
             android:label="@string/CompletableObserver" />
@@ -133,11 +135,13 @@
             android:name=".ui.operators.SwitchMapExampleActivity"
             android:label="@string/switch_map" />
 
-        <activity android:name=".ui.operators.TakeWhileExampleActivity"
-            android:label="@string/take_while"/>
+        <activity
+            android:name=".ui.operators.TakeWhileExampleActivity"
+            android:label="@string/take_while" />
 
-        <activity android:name=".ui.operators.TakeUntilExampleActivity"
-            android:label="@string/take_until"/>
+        <activity
+            android:name=".ui.operators.TakeUntilExampleActivity"
+            android:label="@string/take_until" />
     </application>
 
 </manifest>

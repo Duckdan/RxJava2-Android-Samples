@@ -53,6 +53,7 @@ public class SelectionActivity extends AppCompatActivity {
     }
 
     public void startSearchActivity(View view) {
+        //搜索控件
         startActivity(new Intent(SelectionActivity.this, SearchActivity.class));
     }
 
